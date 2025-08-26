@@ -1,33 +1,27 @@
 import SwiftUI
-import Shared
+import shared
 
 struct ContentView: View {
-    @State private var showContent = false
-    var body: some View {
-        VStack {
-            Button("Click me!") {
-                withAnimation {
-                    showContent = !showContent
-                }
-            }
+    @ObservedObject private(set) var viewModel: ViewModel
 
-            if showContent {
-                VStack(spacing: 16) {
-                    Image(systemName: "swift")
-                        .font(.system(size: 200))
-                        .foregroundColor(.accentColor)
-                    Text("SwiftUI: \(Greeting().greet())")
-                }
-                .transition(.move(edge: .top).combined(with: .opacity))
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
+    var body: some View {
+        Text(viewModel.text)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+extension ContentView {
+    class ViewModel: ObservableObject {
+        @Published var text = "Loading..."
+        init() {
+            Greeting().greeting { greeting, error in
+                DispatchQueue.main.async {
+                    if let greeting = greeting {
+                        self.text = greeting
+                    } else {
+                        self.text = error?.localizedDescription ?? "error"
+                    }
+                }
+            }
+        }
     }
 }
