@@ -30,9 +30,11 @@ kotlin {
 
         commonMain.dependencies {
             implementation(libs.koin.core)
+            implementation(libs.ktor.client.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+
         }
     }
 }
