@@ -41,6 +41,9 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
+
+            implementation(libs.kotlinx.coroutines.android)
+
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
