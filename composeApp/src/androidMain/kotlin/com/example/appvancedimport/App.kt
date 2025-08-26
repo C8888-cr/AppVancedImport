@@ -18,6 +18,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import appvancedimport.composeapp.generated.resources.Res
 import appvancedimport.composeapp.generated.resources.compose_multiplatform
+import com.example.kmmktor.Greeting
 
 @Composable
 @Preview
@@ -34,8 +35,10 @@ fun App() {
             Button(onClick = { showContent = !showContent }) {
                 Text("Click me!")
             }
+
+            //changed greet in greeting
             AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
+                val greeting = remember { Greeting().greeting() }
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
