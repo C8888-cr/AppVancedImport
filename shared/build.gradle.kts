@@ -45,6 +45,9 @@ kotlin {
 
             implementation(libs.ktor.client.core)
             implementation(libs.kotlinx.coroutines.core)
+
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.2.3")
+            implementation("io.ktor:ktor-client-content-negotiation:3.2.3")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
