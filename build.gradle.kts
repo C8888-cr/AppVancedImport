@@ -6,4 +6,6 @@ plugins {
     alias(libs.plugins.composeMultiplatform) apply false
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
+
+    id("com.osacky.doctor") version "0.12.0" apply true
 }

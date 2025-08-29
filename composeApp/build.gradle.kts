@@ -22,6 +22,8 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
+            implementation(libs.kotlinx.coroutines.android) //Ktor
+
 
         }
         commonMain.dependencies {
@@ -34,6 +36,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
+            implementation(libs.kotlinx.coroutines.android) //Ktor
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

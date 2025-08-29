@@ -20,6 +20,10 @@ import appvancedimport.composeapp.generated.resources.Res
 import appvancedimport.composeapp.generated.resources.compose_multiplatform
 import com.example.kmmktor.Greeting
 
+
+
+
+
 @Composable
 @Preview
 fun App() {
@@ -50,3 +54,5 @@ fun App() {
         }
     }
 }
+
+
