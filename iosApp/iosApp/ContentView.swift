@@ -1,4 +1,5 @@
 import SwiftUI
+import KMPObservableViewModelSwiftUI
 import Shared
 
 struct ContentView: View {

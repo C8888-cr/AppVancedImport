@@ -9,6 +9,13 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
 
+   // kotlin("multiplatform") version "2.2.0" line8
+   // kotlin("plugin.serialization") version "2.2.0"
+// id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20-RC"???
+
+
+    id("com.google.devtools.ksp") version "2.2.10-2.0.2"
+    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-46"
 
 }
 
@@ -32,6 +39,14 @@ kotlin {
     }
     
     sourceSets {
+        repositories {
+            mavenCentral()
+        }
+
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
 
         commonMain.dependencies {
             implementation(project.dependencies.platform(libs.koin.bom))
@@ -48,6 +63,12 @@ kotlin {
 
             implementation("io.ktor:ktor-serialization-kotlinx-json:3.2.3")
             implementation("io.ktor:ktor-client-content-negotiation:3.2.3")
+
+            implementation(libs.kotlinx.coroutines.core)
+
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+
+            api("com.rickclephas.kmp:kmp-observableviewmodel-core:1.0.0-BETA-13")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
